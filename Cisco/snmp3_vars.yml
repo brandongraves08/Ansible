@@ -1,0 +1,7 @@
+---
+snmpv3_group: "your_snmpv3_group_name"
+snmpv3_user: "your_snmpv3_username"
+snmpv3_auth_protocol: "sha"
+snmpv3_auth_key: "your_snmpv3_auth_key"
+snmpv3_priv_protocol: "aes"
+snmpv3_priv_key: "your_snmpv3_priv_key"
