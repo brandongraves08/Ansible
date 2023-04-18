@@ -1,0 +1,22 @@
+---
+- name: Configure SNMP community strings on Cisco MDS switches
+  hosts: mds_switches
+  gather_facts: no
+  tasks:
+    - name: Configure SNMP community string (read-only)
+      cisco.nxos.nxos_snmp_community:
+        community: "{{ snmp_ro_community }}"
+        access: ro
+      vars:
+        snmp_ro_community: "your_ro_community_string_here"
+
+    - name: Configure SNMP community string (read-write)
+      cisco.nxos.nxos_snmp_community:
+        community: "{{ snmp_rw_community }}"
+        access: rw
+      vars:
+        snmp_rw_community: "your_rw_community_string_here"
+
+    - name: Save running configuration to startup configuration
+      cisco.nxos.nxos_config_save:
+        destination: "startup-config"
