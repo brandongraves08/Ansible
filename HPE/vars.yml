@@ -1,0 +1,5 @@
+#Vars File
+
+ilo_username: "admin"
+ilo_password: "password"
+firmware_url: "http://firmware.example.com/ilo.bin"

@@ -1,0 +1,25 @@
+#Ansible playbook to update HPE iLO
+
+- name: Update iLO firmware
+  hosts: iLO-servers
+  collections:
+    - hpe.oneview
+  vars:
+    ilo_username: "admin"
+    ilo_password: "password"
+    firmware_url: "http://firmware.example.com/ilo.bin"
+  tasks:
+    - name: Upload firmware image
+      hpeilo_firmware_upload:
+        host: "{{ inventory_hostname }}"
+        login_user: "{{ ilo_username }}"
+        login_password: "{{ ilo_password }}"
+        firmware_url: "{{ firmware_url }}"
+    - name: Update iLO firmware
+      hpeilo_firmware_update:
+        host: "{{ inventory_hostname }}"
+        login_user: "{{ ilo_username }}"
+        login_password: "{{ ilo_password }}"
+        firmware_file: "ilo.bin"
+        timeout: 600
+        wait_for_ilo: yes
